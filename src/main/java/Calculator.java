@@ -1,7 +1,8 @@
 public class Calculator {
 
-    /** Adds two integers and returns the result.
-     * */
+    /**
+     * Adds two integers and returns the result.
+     */
     public int add(int a, int b) {
         return a + b;
     }
@@ -25,13 +26,14 @@ public class Calculator {
     }
 
     /**
+     * multiply the first integer by the second and returns the result.
      */
     public int times(int a, int b) {
         return a * b;
     }
 
     /**
-     * Solves a mathematical expression using the provided methods.<p>
+      Solves a mathematical expression using the provided methods.
      */
     public int solver(int a, int b, int c, int d) {
         return add(div(times(a, b), c), d);

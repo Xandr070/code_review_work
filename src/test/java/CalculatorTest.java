@@ -37,9 +37,10 @@ class CalculatorTest {
 
     @Test
     void solver() {
-        assertEquals(4, calculator.solver(4, 5, 8, 2));
-        assertEquals(5, calculator.solver(3, 4, 4, 2));
+        assertEquals(18, calculator.solver(4, 5, 8, 2));
+        assertEquals(11, calculator.solver(3, 4, 4, 2));
         assertThrows(IllegalArgumentException.class,
-                () -> calculator.solver(3, 2, 0, 5), "You can't divide by 0");
+            () -> calculator.solver(3, 4, 4, 0), "You can't divide by 0");
     }
+
 }

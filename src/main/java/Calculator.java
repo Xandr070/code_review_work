@@ -36,6 +36,9 @@ public class Calculator {
       Solves a mathematical expression using the provided methods.
      */
     public int solver(int a, int b, int c, int d) {
-        return add(div(times(a, b), c), d);
+        System.out.printf("\nInput data: A: %d\tB: %d\tC: %d\tD: %d\n", a, b, c, d);
+        var result = add(dif(times(a, b), div(c, d)), dif(a, d));
+        System.out.println("Result: " + result);
+        return result;
     }
 }

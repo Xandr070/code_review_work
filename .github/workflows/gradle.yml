@@ -34,30 +34,6 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
-  build-ubuntu-java-13:
-    name: Build on Ubuntu with Java 13
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up JDK 13
-        uses: actions/setup-java@v3
-        with:
-          java-version: '13'
-          distribution: 'temurin'
-
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build
-
-      - name: Run tests
-        run: ./gradlew test
-
   build-ubuntu-java-17:
     name: Build on Ubuntu with Java 17
     runs-on: ubuntu-latest
@@ -104,28 +80,6 @@ jobs:
       - name: Run tests
         run: .\gradlew test
 
-  build-windows-java-13:
-    name: Build on Windows with Java 13
-    runs-on: windows-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up JDK 13
-        uses: actions/setup-java@v3
-        with:
-          java-version: '13'
-          distribution: 'temurin'
-
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
-      - name: Build with Gradle
-        run: .\gradlew build
-
-      - name: Run tests
-        run: .\gradlew test
-
   build-windows-java-17:
     name: Build on Windows with Java 17
     runs-on: windows-latest
@@ -159,30 +113,6 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'
-
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build
-
-      - name: Run tests
-        run: ./gradlew test
-
-  build-macos-java-13:
-    name: Build on macOS with Java 13
-    runs-on: macos-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up JDK 13
-        uses: actions/setup-java@v3
-        with:
-          java-version: '13'
           distribution: 'temurin'
 
       - name: Make gradlew executable

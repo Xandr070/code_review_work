@@ -1,17 +1,13 @@
-# Задание 1: Автоматическая сборка и тестирование при push или pull request
-name: Build and Test
+# Задание 2: Автоматическая проверка и сборка по расписанию
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  schedule:
+    - cron: '30 12 * * 3' # Каждую среду в 12:30
+    - cron: '00 22 * * 5' # Каждую пятницу в 22:00
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
@@ -22,9 +18,6 @@ jobs:
       with:
         distribution: corretto
         java-version: '16'
-
-    - name: Grant execute permissions for Gradle wrapper
-      run: chmod +x ./gradlew
 
     - name: Build with Gradle
       run: ./gradlew build

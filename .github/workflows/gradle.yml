@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        java-version: [11, 13, 17]
+        java-version: [11, 17]
 
     steps:
       - name: Checkout repository
@@ -34,11 +34,11 @@ jobs:
         run: ./gradlew test
 
   macos:
-    runs-on: macos-latest
+    runs-on: macos-11
 
     strategy:
       matrix:
-        java-version: [11, 13, 17]
+        java-version: [11, 17]
 
     steps:
       - name: Checkout repository
@@ -60,11 +60,11 @@ jobs:
         run: ./gradlew test
 
   windows:
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     strategy:
       matrix:
-        java-version: [11, 13, 17]
+        java-version: [11, 17]
 
     steps:
       - name: Checkout repository

@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '30 12 * * 3' # Каждую среду в 12:30
     - cron: '00 22 * * 5' # Каждую пятницу в 22:00
+  workflow_dispatch:
 
 jobs:
   build:

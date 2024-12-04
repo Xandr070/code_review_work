@@ -1,31 +1,86 @@
-# Задание 2: Автоматическая проверка и сборка по расписанию
-name: Scheduled Build and Test
+# Задание 3
+name: Cross-Platform and Multiple Java Versions Build and Test
 
 on:
   schedule:
-    - cron: '30 12 * * 3' # Каждую среду в 12:30
-    - cron: '00 22 * * 5' # Каждую пятницу в 22:00
+    - cron: '30 12 * * 3'  # Каждую среду в 12:30
+    - cron: '00 22 * * 5'  # Каждую пятницу в 22:00
   workflow_dispatch:
-
 jobs:
-  build:
+  ubuntu:
     runs-on: ubuntu-22.04
 
+    strategy:
+      matrix:
+        java-version: [11, 13, 17]
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        distribution: corretto
-        java-version: '16'
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: corretto
+          java-version: ${{ matrix.java-version }}
 
-    - name: Grant execute permissions for Gradle wrapper
-      run: chmod +x ./gradlew
+      - name: Grant execute permissions for Gradle wrapper
+        run: chmod +x ./gradlew
 
-    - name: Build with Gradle
-      run: ./gradlew build
+      - name: Build with Gradle
+        run: ./gradlew build
 
-    - name: Run tests
-      run: ./gradlew test
+      - name: Run tests
+        run: ./gradlew test
+
+  macos:
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        java-version: [11, 13, 17]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: corretto
+          java-version: ${{ matrix.java-version }}
+
+      - name: Grant execute permissions for Gradle wrapper
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Run tests
+        run: ./gradlew test
+
+  windows:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        java-version: [11, 13, 17]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: corretto
+          java-version: ${{ matrix.java-version }}
+
+      - name: Grant execute permissions for Gradle wrapper
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Run tests
+        run: ./gradlew test
